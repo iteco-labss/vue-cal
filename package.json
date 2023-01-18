@@ -40,7 +40,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --base /vue-cal/",
-    "build-bundle": "BUNDLE=true vite build && mv ./dist/style.css ./dist/vuecal.css && rm ./dist/favicon.ico",
+    "build:bundle": "cross-env BUNDLE=true vite build && shx mv ./dist/style.css ./dist/vuecal.css && shx rm ./dist/favicon.ico",
     "serve": "vite preview docs --base /vue-cal/",
     "lint": "vite lint"
   },
@@ -53,12 +53,14 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.2.45",
     "autoprefixer": "^10.4.13",
+    "cross-env": "^7.0.3",
     "eslint": "^8.32.0",
     "postcss": "^8.4.21",
     "pug": "^3.0.2",
     "rollup": "^3.10.0",
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.57.1",
+    "shx": "^0.3.4",
     "simple-syntax-highlighter": "^2.2.5",
     "vite": "^4.0.4",
     "vue": "^3.2.45",
