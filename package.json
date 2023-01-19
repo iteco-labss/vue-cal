@@ -1,10 +1,10 @@
 {
-  "name": "vue-cal",
+  "name": "@iteco-labss/vue-cal",
   "version": "4.8.1",
   "description": "A Vue JS full calendar, no dependency, no BS. :metal:",
   "author": "Antoni Andre <antoniandre.web@gmail.com>",
   "homepage": "https://antoniandre.github.io/vue-cal",
-  "repository": "https://github.com/antoniandre/vue-cal",
+  "repository": "https://github.com/iteco-labss/vue-cal",
   "license": "MIT",
   "funding": "https://github.com/sponsors/antoniandre",
   "main": "dist/vue-cal.cjs.js",
