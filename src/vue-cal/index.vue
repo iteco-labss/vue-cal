@@ -862,6 +862,17 @@ export default {
         event.endTimeMinutes = plusHalfSnapTime - (plusHalfSnapTime % this.snapToTime)
       }
 
+      // Apply constraints
+      const { latestEnd } = event.constraints || {}
+      if (latestEnd) {
+        event.endTimeMinutes = Math.min(event.endTimeMinutes, latestEnd.getHours() * 60 + latestEnd.getMinutes())
+      }
+
+      // Prevent overflow over timeTo
+      if (event.endTimeMinutes > this.timeTo) {
+        event.endTimeMinutes = this.timeTo
+      }
+
       if (segment) segment.endTimeMinutes = event.endTimeMinutes
 
       // Remove 1 second if time is 24:00.
@@ -938,12 +949,18 @@ export default {
           let timeMinutes = timeAtCursor.getHours() * 60 + timeAtCursor.getMinutes()
           const plusHalfSnapTime = timeMinutes + this.snapToTime / 2
           timeMinutes = plusHalfSnapTime - (plusHalfSnapTime % this.snapToTime)
+          // timeMinutes = timeAtCursor.getMinutes() === timeMinutes ? timeMinutes + this.timeStep : timeMinutes
           timeAtCursor.setHours(0, timeMinutes, 0, 0)
         }
 
         // If dragging the bottom of the event.
         const dragFromBottom = start < timeAtCursor
         const { event } = dragCreateAnEvent
+
+        // Apply constraints
+        const { latestEnd, earliestStart } = event.constraints || {}
+        event.start = dragFromBottom ? start : (earliestStart ? new Date(Math.max(earliestStart.getTime(), timeAtCursor.getTime)) : timeAtCursor)
+        event.end = dragFromBottom ? (latestEnd ? new Date(Math.min(timeAtCursor.getTime(), latestEnd.getTime())) : timeAtCursor) : start
 
         event.start = dragFromBottom ? start : timeAtCursor
         event.end = dragFromBottom ? timeAtCursor : start
