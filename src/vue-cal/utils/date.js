@@ -158,6 +158,19 @@ export default class DateUtils {
    */
   dateToMinutes = date => date.getHours() * 60 + date.getMinutes()
 
+  minutesToDate(minutes) {
+    const hours = Math.floor(minutes / 60)
+    const mins = minutes % 60
+
+    const date = new Date()
+    date.setHours(hours)
+    date.setMinutes(mins)
+    date.setSeconds(0)
+    date.setMilliseconds(0)
+
+    return date
+  }
+
   /**
    * Count the number of days this date range spans onto.
    * E.g. countDays(2019-11-02 18:00, 2019-11-03 02:00) = 2
