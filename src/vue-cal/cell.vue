@@ -209,7 +209,7 @@ export default {
 
         // If snapToTime, set the start to the closest intervaled number.
         if (this.options.snapToTime) {
-          let timeMinutes = this.timeAtCursor.getHours() * 60 + this.timeAtCursor.getMinutes()
+          let timeMinutes = this.utils.date.dateToMinutes(this.timeAtCursor)
           const plusHalfSnapTime = timeMinutes + this.options.snapToTime / 2
           timeMinutes = plusHalfSnapTime - (plusHalfSnapTime % this.options.snapToTime)
 

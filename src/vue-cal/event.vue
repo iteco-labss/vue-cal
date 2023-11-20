@@ -212,7 +212,7 @@ export default {
       minutesFromTop = Math.min(endTimeMinutes, this.vuecal.timeTo) - this.vuecal.timeFrom
       const bottom = Math.round(minutesFromTop * this.vuecal.timeCellHeight / this.vuecal.timeStep)
 
-      const height = Math.max(bottom - top, 5) // Min height is 5px.
+      const height = Math.max(bottom - top, 15) // Min height is 5px.
 
       return { top, height }
     },
