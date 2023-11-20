@@ -327,7 +327,7 @@ export default {
         },
         clickHoldAnEvent: {
           _eid: null, // Only one at a time.
-          timeout: 1200, // Hold for 1.2s to delete an event.
+          timeout: 800, // Hold for 1.2s to delete an event.
           timeoutId: null
         },
         dblTapACell: {
@@ -337,7 +337,7 @@ export default {
         clickHoldACell: {
           cellId: null,
           split: null,
-          timeout: 1200, // Hold for 1.2s to create an event.
+          timeout: 800, // Hold for 1.2s to create an event.
           timeoutId: null,
           eventCreated: false
         },
